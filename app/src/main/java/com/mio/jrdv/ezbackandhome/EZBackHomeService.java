@@ -2,13 +2,11 @@ package com.mio.jrdv.ezbackandhome;
 
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.PixelFormat;
-import android.graphics.Point;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
+import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
@@ -26,7 +24,8 @@ public class EZBackHomeService extends AccessibilityService {
 
     //PARA LAS EMDIDAD DE PANTALLA Y CALCULAR OK EL fLINT
 
-    int altura;
+    int alturaescala;
+    int heigh;//altura de la pantalla en pixels
 
 
     //para saber si es un arriba y abajo para atras key
@@ -166,14 +165,14 @@ public class EZBackHomeService extends AccessibilityService {
         //para saber medidas pantalla reales!!:
 
         int w = windowManager.getDefaultDisplay().getWidth();
-        int h = windowManager.getDefaultDisplay().getHeight();
-        Log.d("INFO","heigh= "+h+ " weigh= "+w);//s4 D/INFO: heigh= 1920 weigh= 1080
+        heigh = windowManager.getDefaultDisplay().getHeight();
+        Log.d("INFO","heigh= "+heigh+ " weigh= "+w);//s4 D/INFO: heigh= 1920 weigh= 1080
 
-         altura=h/25;//TODO poner de azephyr valor
+         alturaescala =heigh/25;//TODO poner de azephyr valor
 
         params= new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
-                altura,
+                alturaescala,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
 
@@ -188,8 +187,19 @@ public class EZBackHomeService extends AccessibilityService {
 
 
 
+        //AÑADIDMOS LE LISTENER
+
+        final GestureDetector gdt = new GestureDetector(new GestureListener());
 
 
+
+        azephyrPanelView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(final View view, final MotionEvent event) {
+                gdt.onTouchEvent(event);
+                return true;
+            }
+        });
 
 
 
@@ -242,6 +252,155 @@ public class EZBackHomeService extends AccessibilityService {
 */
     }
 
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////GESTURE LISTENER PARA EL FLING//////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+            /*
+            if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                Log.d("FLING","right to left");
+                return false; // Right to left
+            } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                Log.d("FLING","left to right");
+                return false; // Left to right
+            }
+
+            if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+
+                Log.d("FLING","botton to top");
+                return false; // Bottom to top
+            } else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+
+                Log.d("FLING","top to botton");
+                return false; // Top to bottom
+            }
+            */
+            //copiado de azpehyr mio
+
+            lock = false;
+
+
+            if (velocityY < -heigh / 2) {
+
+                //realmente  da = el valor el caso es que sea negativo(hacia arriba
+                lock = false;
+                Log.d("FLING", "lock non se va  a hacer");
+                PulsarHomeKey();
+
+            }
+
+
+            return false;
+        }
+
+
+        //idem para el onscroll del back key
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+
+           // Log.d("scroll", "scroll x: " + distanceX + " scroll y: " + distanceY);
+
+            int Yinicial = (int) e1.getY();
+            int Yfinal = (int) e2.getY();
+
+
+           // Log.d("scroll", "Yinicial " + Yinicial + " Yfinal: " + Yfinal);
+
+            int escala = heigh / 400;
+            //Log.d("scroll", "escala del scroll " + escala);
+            if (Math.abs(Yfinal) > Yinicial * escala &&!lock) {
+                lock = true;
+                Log.d("scroll", "1/2 lock vetrical ok!!");
+            }
+
+            int YfinalNew = Yinicial + 2 * escala;
+
+           // Log.d("scroll", "YfinalNew " + YfinalNew);
+            if (Math.abs(Yfinal) <= YfinalNew && lock) {
+
+               Log.d("scroll", "ciompleto scroll up and down!!");
+
+                lock = false;
+
+                BackKeySImulate();
+
+            }
+            ///copiado de azephy mio
+
+            /*
+
+Dim Yinicial As Int
+
+	Dim Yfinal As Int
+
+	Yinicial= ZephyrPanelGesture.getY(MotionEvent1, 0) 'Y1
+	Yfinal =ZephyrPanelGesture.getY(MotionEvent2, 0)  'Y2
+
+	'Log("inicial:" & Yinicial & "  y final:"  &Yfinal)
+
+	Dim escala As Int
+	escala=heightPixels/100
+	'Log("la escala del lockscreen es:"& escala)
+	'esto da 480/100= 4 para el icas y dara 1920/100=19 para el S4
+
+
+	If Abs(Yfinal)>escala*Yinicial Then
+	Lock=True
+	'Log("1/2 lock verical ok")
+
+	End If
+
+
+
+	Dim YfinalNew As Int
+
+	YfinalNew=Yinicial+2*escala
+
+	If Abs(Yfinal)<=YfinalNew And Lock=True Then
+
+
+	'Log("se va ahcer lock")
+
+	Lock=False
+
+	LockScreen
+
+	End If
+
+
+             */
+
+
+
+            return true;
+
+        }
+    }
+
+    private void PulsarHomeKey() {
+
+        try {
+            performGlobalAction(AccessibilityService.GLOBAL_ACTION_HOME);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
@@ -263,4 +422,14 @@ public class EZBackHomeService extends AccessibilityService {
         Log.d("INFO","ACCESIBILITY EVENT DETECTED!!! IN  AZEPHYR NEW");
     }
 
-}
+
+
+    private void BackKeySImulate() {
+        try {
+            performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    }
