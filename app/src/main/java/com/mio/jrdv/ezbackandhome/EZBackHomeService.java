@@ -2,8 +2,12 @@ package com.mio.jrdv.ezbackandhome;
 
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.PixelFormat;
+import android.graphics.Point;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,16 +18,38 @@ public class EZBackHomeService extends AccessibilityService {
 
     WindowManager windowManager;
     ImageView back,home,notification,minimize;
+    ImageView azephyrPanel;    //mio panel zephyr:
+    View azephyrPanelView;    //mio panel zephyr:
     WindowManager.LayoutParams params;
     AccessibilityService service;
+
+
+    //PARA LAS EMDIDAD DE PANTALLA Y CALCULAR OK EL fLINT
+
+    int altura;
+
+
+    //para saber si es un arriba y abajo para atras key
+
+    boolean lock;
+
+
 
     @SuppressLint("RtlHardcoded")
     @Override
     public void onCreate() {
         super.onCreate();
 
+
+        Log.d("INFO","ARRANACADO AZEPHYR NEW");
+
+
+        lock=false;
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
+
+
+ /*
         back = new ImageView(this);
         home = new ImageView(this);
         minimize = new ImageView(this);
@@ -33,9 +59,25 @@ public class EZBackHomeService extends AccessibilityService {
         home.setImageResource(R.drawable.ic_home);
         minimize.setImageResource(R.drawable.ic_min);
         notification.setImageResource(R.drawable.ic_notification);
+*/
+
+
+
+
+
+
+        //mio panel zephyr:
+/*
+        azephyrPanel=new ImageView(this);
+        azephyrPanel.setImageResource(R.drawable.azephyrpanel1);
+*/
+
+        //mio panel zephyr con View MEJOR
+        azephyrPanelView=new View(this);
+
 
 ///////////////////////////////////home//////////////////////////////////////////////
-
+/*
         params= new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -48,9 +90,9 @@ public class EZBackHomeService extends AccessibilityService {
 
         windowManager.addView(home, params);
 
-
+*/
         ///////////////////////////////////minimize//////////////////////////////////////////////
-
+/*
         params= new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -62,8 +104,10 @@ public class EZBackHomeService extends AccessibilityService {
         params.y = 250;
 
         windowManager.addView(minimize, params);
-        ///////////////////////////////////notification//////////////////////////////////////////////
 
+ */
+        ///////////////////////////////////notification//////////////////////////////////////////////
+/*
         params= new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -75,11 +119,13 @@ public class EZBackHomeService extends AccessibilityService {
         params.y = 450;
 
         windowManager.addView(notification, params);
-
+*/
         ///////////////////////////////////back//////////////////////////////////////////////
+/*
+
 
         params= new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
@@ -90,6 +136,66 @@ public class EZBackHomeService extends AccessibilityService {
 
         windowManager.addView(back, params);
 
+*/
+        ////////////////////////////////   //mio panel zephyr://///////////////////////////////////////////
+/*
+        params= new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
+
+
+
+
+        params.gravity = Gravity.BOTTOM|Gravity.CENTER;
+        params.x = 0;
+        params.y = 0;
+
+        windowManager.addView(azephyrPanel, params);
+*/
+
+        ////////////////////////////////   //mio panel zephyr View!!! en vez de ImageView://///////////////////////////////////////////
+
+
+        // azephyrPanelView.setLayoutParams(new WindowManager.LayoutParams(780, 50));
+
+        azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));
+
+
+        //para saber medidas pantalla reales!!:
+
+        int w = windowManager.getDefaultDisplay().getWidth();
+        int h = windowManager.getDefaultDisplay().getHeight();
+        Log.d("INFO","heigh= "+h+ " weigh= "+w);//s4 D/INFO: heigh= 1920 weigh= 1080
+
+         altura=h/25;//TODO poner de azephyr valor
+
+        params= new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                altura,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
+
+
+
+
+        params.gravity = Gravity.BOTTOM|Gravity.CENTER;
+        params.x = 0;
+        params.y = 0;
+
+        windowManager.addView(azephyrPanelView, params);
+
+
+
+
+
+
+
+
+/*
+
+//LISTENER...
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,16 +239,20 @@ public class EZBackHomeService extends AccessibilityService {
                 }
             }
         });
-
+*/
     }
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
+        Log.d("INFO","ACCESIBILITY EVENT DETECTED!!! IN  AZEPHYR NEW");
+
     }
 
     @Override
     public void onInterrupt() {
+
+        Log.d("INFO","INTERRUMPIDO AZEPHYR NEW");
 
     }
 
@@ -150,6 +260,7 @@ public class EZBackHomeService extends AccessibilityService {
     protected void onServiceConnected() {
         super.onServiceConnected();
         Log.d("TAG", "onServiceConnected");
+        Log.d("INFO","ACCESIBILITY EVENT DETECTED!!! IN  AZEPHYR NEW");
     }
 
 }

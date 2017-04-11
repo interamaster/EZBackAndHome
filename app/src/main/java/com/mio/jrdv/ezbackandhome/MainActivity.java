@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //TODO ask for ACCESIBILITY Y ADMIN!!
+
+
         // Code to start the Service
         startService(new Intent(getApplication(), EZBackHomeService.class));
     }
