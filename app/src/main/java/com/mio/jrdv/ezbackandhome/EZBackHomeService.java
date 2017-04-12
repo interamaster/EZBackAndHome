@@ -159,7 +159,7 @@ public class EZBackHomeService extends AccessibilityService {
 
         // azephyrPanelView.setLayoutParams(new WindowManager.LayoutParams(780, 50));
 
-        azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));
+        azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));//TODO quitar /hacer transparente
 
 
         //para saber medidas pantalla reales!!:
