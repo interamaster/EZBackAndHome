@@ -47,6 +47,13 @@ public class EZBackHomeService extends AccessibilityService {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
 
+       boolean PANELINBLACK = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_PANELINBLACK,false);//por defecto vale 0){
+
+        Log.d("INFO ","PREF_BOOL_PANELINBLACK in service: "+PANELINBLACK);
+
+
+
+
 
  /*
         back = new ImageView(this);
@@ -159,7 +166,18 @@ public class EZBackHomeService extends AccessibilityService {
 
         // azephyrPanelView.setLayoutParams(new WindowManager.LayoutParams(780, 50));
 
-        azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));//TODO quitar /hacer transparente
+        if (PANELINBLACK){
+            azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));//TODO quitar /hacer transparente
+
+        }
+
+        else {
+
+            azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.transparent));//TODO quitar /hacer transparente
+
+
+        }
+
 
 
         //para saber medidas pantalla reales!!:
