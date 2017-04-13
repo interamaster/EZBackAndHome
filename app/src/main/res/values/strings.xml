@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">EZBackAndHome</string>
-    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working\nOnce clicked please enable de EZGestures Service and then come back to Start\n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to you,once you got it, I will recommend to leave it transparent..but it is up 2 u!!!</string>
+    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working\nOnce clicked please enable de EZGestures Service \n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to understand!!!</string>
 </resources>

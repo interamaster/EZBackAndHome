@@ -2,10 +2,8 @@ package com.mio.jrdv.ezbackandhome;
 
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
-import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -13,16 +11,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
-import android.widget.ImageView;
-
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class EZBackHomeService extends AccessibilityService {
 
     WindowManager windowManager;
-    ImageView back,home,notification,minimize;
+   // ImageView back,home,notification,minimize;
    // ImageView azephyrPanel;    //mio panel zephyr:
     View azephyrPanelView;    //mio panel zephyr:
     WindowManager.LayoutParams params;
@@ -56,9 +49,9 @@ public class EZBackHomeService extends AccessibilityService {
 
 
 
-       boolean PANELINBLACK = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_PANELINBLACK,false);//por defecto vale 0){
+     //  boolean PANELINBLACK = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_PANELINBLACK,false);//por defecto vale 0){
 
-        Log.d("INFO ","PREF_BOOL_PANELINBLACK in service: "+PANELINBLACK);
+      //  Log.d("INFO ","PREF_BOOL_PANELINBLACK in service: "+PANELINBLACK);
 
 
 
@@ -174,7 +167,8 @@ public class EZBackHomeService extends AccessibilityService {
 
 
         // azephyrPanelView.setLayoutParams(new WindowManager.LayoutParams(780, 50));
-
+/*
+//ya no lo uso
         if (PANELINBLACK){
             azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.black));//TODO quitar /hacer transparente
 
@@ -187,7 +181,7 @@ public class EZBackHomeService extends AccessibilityService {
 
         }
 
-
+*/
 
         //para saber medidas pantalla reales!!:
 
@@ -457,7 +451,7 @@ Dim Yinicial As Int
 
 
 
-        recreatePanel();
+
 
 
         //volvemos a Mainactivity
@@ -468,120 +462,9 @@ Dim Yinicial As Int
 
 
 
-/*
-
-TODO no funciona
-        windowManager.removeView(azephyrPanelView);
-       azephyrPanelView.setVisibility(View.GONE);
-        azephyrPanelView=null;
-
-
-
-
-
-        recreatePanel();
-*/
-
-
-        //((WindowManager) getApplicationContext().getSystemService(Service.WINDOW_SERVICE)).removeView(azephyrPanelView);
-
-
-
 
     }
 
-    private void recreatePanel() {
-
-
-
-
-        final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(new Runnable() {
-            public void run() {
-
-
-
-
-
-
-                      Log.i("INFO", "SETTINGS UPDATED, hurray!");
-                      windowManager.removeView(azephyrPanelView);
-                ((WindowManager) getApplicationContext().getSystemService(Service.WINDOW_SERVICE)).removeView(azephyrPanelView);
-
-
-
-
-            }
-
-        }, 0, 1,  TimeUnit.SECONDS);
-
-
-
-
-        //vovlemos a dibujar el panel y el listener gesture
-
-        boolean PANELINBLACK = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_PANELINBLACK,false);//por defecto vale 0){
-
-        Log.d("INFO ","PREF_BOOL_PANELINBLACK in service: "+PANELINBLACK);
-
-
-        //mio panel zephyr con View MEJOR
-        azephyrPanelView=new View(this);
-
-        if (PANELINBLACK){
-            azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.transparent));//TODO quitar /hacer transparente
-
-        }
-
-        else {
-
-            azephyrPanelView.setBackgroundColor(getResources().getColor(android.R.color.transparent));//TODO quitar /hacer transparente
-
-
-        }
-
-        //para saber medidas pantalla reales!!:
-
-        int w = windowManager.getDefaultDisplay().getWidth();
-        heigh = windowManager.getDefaultDisplay().getHeight();
-        Log.d("INFO","heigh= "+heigh+ " weigh= "+w);//s4 D/INFO: heigh= 1920 weigh= 1080
-
-        alturaescala =heigh/25;//TODO poner de azephyr valor
-
-        params= new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                alturaescala,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
-
-
-
-
-        params.gravity = Gravity.BOTTOM|Gravity.CENTER;
-        params.x = 0;
-        params.y = 0;
-
-        windowManager.addView(azephyrPanelView, params);
-
-
-
-        //AÑADIDMOS LE LISTENER
-
-        final GestureDetector gdt = new GestureDetector(new GestureListener());
-
-
-
-        azephyrPanelView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(final View view, final MotionEvent event) {
-                gdt.onTouchEvent(event);
-                return true;
-            }
-        });
-
-
-
-    }
 
 
     private void BackKeySImulate() {

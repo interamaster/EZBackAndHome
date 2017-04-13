@@ -1,34 +1,24 @@
 package com.mio.jrdv.ezbackandhome;
 
-import android.accessibilityservice.AccessibilityServiceInfo;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
-import android.preference.PreferenceActivity;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityManager;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -140,12 +130,14 @@ public class MainActivity extends AppCompatActivity {
         if ( PANELINBLACK) {
 
             swtichPANELINBLACK.setChecked(true);
+            ShowHidePanel(true);
 
 
         }
         else{
             swtichPANELINBLACK.setChecked(false);
 
+            ShowHidePanel(false);
 
         }
 
