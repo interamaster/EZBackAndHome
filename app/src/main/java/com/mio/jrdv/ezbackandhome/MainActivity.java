@@ -4,6 +4,7 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceActivity;
@@ -12,11 +13,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -60,10 +68,18 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 0;
 
+    //para enselar panel
+
+    View azephyrPanelViewFromMain;    //mio panel zephyr:
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
 
         Boolean SERVICEENABLED = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_SERVICEENABLED,false);//por defecto vale 0){
@@ -153,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
 
                     Myapplication.preferences.edit().putBoolean(Myapplication.PREF_BOOL_PANELINBLACK, bChecked).commit();
 
+                    ShowHidePanel(bChecked);
+
 
 
                 } else {
@@ -164,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Myapplication.preferences.edit().putBoolean(Myapplication.PREF_BOOL_PANELINBLACK, bChecked).commit();
+
+                    ShowHidePanel(bChecked);
 
                 }
             }
@@ -213,6 +233,85 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
+
+    }
+
+    private void ShowHidePanel(boolean PANELINBLACK) {
+
+
+
+
+
+        RelativeLayout rLayout = (RelativeLayout)findViewById(R.id.activity_main);
+        rLayout.removeView(azephyrPanelViewFromMain);
+
+
+        if (azephyrPanelViewFromMain==null){
+            azephyrPanelViewFromMain= new View(this);
+        }
+
+
+        if (PANELINBLACK){
+            azephyrPanelViewFromMain.setBackgroundColor(getResources().getColor(android.R.color.black));//TODO quitar /hacer transparente
+
+        }
+
+        else {
+
+            azephyrPanelViewFromMain.setBackgroundColor(getResources().getColor(android.R.color.transparent));//TODO quitar /hacer transparente
+
+
+        }
+
+
+     WindowManager windowmanager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+
+        Display display = windowmanager.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        Log.d("INFO","heigh= "+height+ " weigh= "+width);//s4 D/INFO: heigh= 1920 weigh= 1080
+
+
+        int alturaescala =height/25;//TODO poner de azephyr valor
+
+
+        RelativeLayout.LayoutParams params =  new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,alturaescala);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+
+
+        azephyrPanelViewFromMain.setLayoutParams(params);
+
+        //azephyrPanelViewFromMain.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, alturaescala));
+
+        /*
+         params.gravity = Gravity.BOTTOM|Gravity.CENTER;
+        params.x = 0;
+        params.y = 0;
+         */
+
+
+
+
+        rLayout.addView(azephyrPanelViewFromMain);
+
+
+
+
+/*
+
+        params.gravity = Gravity.BOTTOM|Gravity.CENTER;
+        params.x = 0;
+        params.y = 0;
+
+        windowManager.addView(azephyrPanelViewFromMain, params);
+*/
 
 
 

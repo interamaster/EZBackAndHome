@@ -24,8 +24,8 @@ import android.content.SharedPreferences;
 public class Myapplication extends Application {
     public static SharedPreferences preferences;
 
-    public static final String PREF_BOOL_SERVICEENABLED="NO";
-    public static final String PREF_BOOL_PANELINBLACK="NO";
+    public static final String PREF_BOOL_SERVICEENABLED="ServiceEnable";
+    public static final String PREF_BOOL_PANELINBLACK="PanelBlack";
 
 
     @Override
