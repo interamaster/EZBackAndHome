@@ -16,8 +16,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.builder.AnimateGifMode;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -27,6 +31,10 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+
+    //para los gift animados
+
+    private ImageView GifVew;
 
 
     @Override
@@ -187,6 +195,16 @@ public class WelcomeActivity extends AppCompatActivity {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View view = layoutInflater.inflate(layouts[position], container, false);
+            //TODO aqui deberia ir lo del Ion.with gif animated:
+
+             GifVew = (ImageView) view.findViewById(R.id.gif);
+
+            Ion.with(GifVew)
+                    .error(R.drawable.ic_home)
+                    .animateGif(AnimateGifMode.ANIMATE)
+                    // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                    .load("android.resource://com.mio.jrdv.ezbackandhome/"+R.drawable.gif_home);
+
             container.addView(view);
 
             return view;

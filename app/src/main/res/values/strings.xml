@@ -1,23 +1,23 @@
 <resources>
     <string name="app_name">EZBackAndHome</string>
-    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working\nOnce clicked please enable de EZGestures Service \n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to understand!!!</string>
+    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working.Once clicked please enable de EZGestures Service \n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to understand!!!</string>
 
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+    <string name="slide_1_title">EZBACKandhOME!</string>
+    <string name="slide_1_desc">Forget the physical buttons!\nThis is faster and more intuitive.\nOnce used to do it you will never use the physical buttons anymore!!!</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="slide_2_title">FLING to HOME</string>
+    <string name="slide_2_desc">Fling(swipe up fast and release finger) from bottom to simulate the home Button press!</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">SWIPE UP/DOWN to BACK</string>
+    <string name="slide_3_desc">Simply swipe up and down fast from bottom of the screen to simulate the BACK Key press!</string>
 
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="slide_4_title">ENABLE ME FIRST!!</string>
+    <string name="slide_4_desc">In order to work, you first must enable me as an Accesibility Service running.\nDo not worry about battery usage, it is less than 1% at week!\nYou can take a look , on how we detect the Fling and the Swipe up and down by enable the Panel in Black.\nHope you enjoy it!!!\n\n (c)JRDVSOFT Abril 2017</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
