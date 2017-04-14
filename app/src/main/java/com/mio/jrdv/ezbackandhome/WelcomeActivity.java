@@ -199,11 +199,23 @@ public class WelcomeActivity extends AppCompatActivity {
 
              GifVew = (ImageView) view.findViewById(R.id.gif);
 
-            Ion.with(GifVew)
-                    .error(R.drawable.ic_home)
-                    .animateGif(AnimateGifMode.ANIMATE)
-                    // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
-                    .load("android.resource://com.mio.jrdv.ezbackandhome/"+R.drawable.gif_home);
+            if (position==1){
+                Ion.with(GifVew)
+                        .error(R.drawable.ic_home)
+                        .animateGif(AnimateGifMode.ANIMATE)
+                        // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                        .load("android.resource://com.mio.jrdv.ezbackandhome/"+R.drawable.gif_home);
+
+            }
+
+            else if(position==2) {
+                Ion.with(GifVew)
+                        .error(R.drawable.ic_home)
+                        .animateGif(AnimateGifMode.ANIMATE)
+                        // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                        .load("android.resource://com.mio.jrdv.ezbackandhome/" + R.drawable.gif_back);
+
+            }
 
             container.addView(view);
 
