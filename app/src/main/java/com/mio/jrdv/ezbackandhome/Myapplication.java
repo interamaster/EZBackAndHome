@@ -27,6 +27,9 @@ public class Myapplication extends Application {
     public static final String PREF_BOOL_SERVICEENABLED="ServiceEnable";
     public static final String PREF_BOOL_PANELINBLACK="PanelBlack";
 
+    //para ña intro
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+
 
     @Override
     public void onCreate() {

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //v001 vesion inicial de la wweb con iconos ok
     //v04 añadido panel zephyr ok en negro y funcoines de back y home ok..12/4/17
     //V055 AÑADIDO CHEQUEO Y OBLIGACION DE ACTIVAR ACESIBILITY SI O SI)
+    //V06 añadido en main previsualizar el panel de deslizamoento
 
 
 
@@ -144,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //To hide AppBar for fullscreen.
-        ActionBar ab = getSupportActionBar();
-        ab.hide();
+      //  ActionBar ab = getSupportActionBar();
+     //   ab.hide();
 
 
 
