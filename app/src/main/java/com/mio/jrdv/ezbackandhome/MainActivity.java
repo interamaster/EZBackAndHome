@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -33,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    String apkname4AccesibilityService="com.mio.jrdv.ezbackandhome/com.mio.jrdv.ezbackandhome.EZBackHomeService";
+   // String apkname4AccesibilityService="com.mio.jrdv.ezbackandhome/com.mio.jrdv.ezbackandhome.EZBackHomeService";
+
+    //TODO PARA LA DEMO ES DISTINTO:
+
+    String apkname4AccesibilityService="com.mio.jrdv.ezbackandhomedemo/com.mio.jrdv.ezbackandhome.EZBackHomeService";
+
 
     /*
     To find out the ID of your and all the installed accessibility services, you can run the following code snippet:
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        chequeasobreescribirpantalla();
 
 
         Boolean SERVICEENABLED = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_SERVICEENABLED,false);//por defecto vale 0){
@@ -85,6 +90,34 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("INFO","PREF_BOOL_PANELINBLACK: "+PANELINBLACK);
 
+
+
+        //chequeo veriosn DEMO o INFINITE
+
+
+        if (BuildConfig.FLAVOR == "demo") {
+            // add some ads or restrict functionallity
+            Log.d("INFO","MODO DEMO: ");
+
+            //SI ES DEMO EL STRING CAMBIO
+            apkname4AccesibilityService="com.mio.jrdv.ezbackandhomedemo/com.mio.jrdv.ezbackandhome.EZBackHomeService";
+
+
+
+
+
+        }
+        else  if (BuildConfig.FLAVOR == "infinite") {
+            // add some ads or restrict functionallity
+
+            Log.d("INFO","MODO INFINITE: ");
+
+            //SI ES INFINITE EL STRING CAMBIO
+            apkname4AccesibilityService="com.mio.jrdv.ezbackandhomeinfinite/com.mio.jrdv.ezbackandhome.EZBackHomeService";
+
+
+
+        }
 
 
 
@@ -195,7 +228,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                     //antes de habilitarlo hayq ue conseguir permiso de sobreescribir pantalla
-                    chequeasobreescribirpantalla();
+                    //TODO pero asi lo poene detras del enable servie y da error!!! lo pongo la ppio
+
+                    //chequeasobreescribirpantalla();
 
                     Log.d("INFO","PREF_BOOL_SERVICEENABLED: "+bChecked);
 

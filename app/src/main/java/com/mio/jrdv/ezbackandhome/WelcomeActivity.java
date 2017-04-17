@@ -199,23 +199,64 @@ public class WelcomeActivity extends AppCompatActivity {
 
              GifVew = (ImageView) view.findViewById(R.id.gif);
 
-            if (position==1){
-                Ion.with(GifVew)
-                        .error(R.drawable.ic_home)
-                        .animateGif(AnimateGifMode.ANIMATE)
-                        // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
-                        .load("android.resource://com.mio.jrdv.ezbackandhome/"+R.drawable.gif_home);
+
+
+            //chequeo veriosn DEMO o INFINITE
+
+
+            if (BuildConfig.FLAVOR == "demo") {
+                // add some ads or restrict functionallity
+                Log.d("INFO","MODO DEMO: ");
+
+
+
+                if (position==1){
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomedemo/"+R.drawable.gif_home);
+
+                }
+
+                else if(position==2) {
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomedemo/" + R.drawable.gif_back);
+
+                }
+
+
+            }
+            else  if (BuildConfig.FLAVOR == "infinite") {
+                // add some ads or restrict functionallity
+
+                Log.d("INFO","MODO INFINITE: ");
+
+
+                if (position==1){
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/"+R.drawable.gif_home);
+
+                }
+
+                else if(position==2) {
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/" + R.drawable.gif_back);
+
+                }
+
 
             }
 
-            else if(position==2) {
-                Ion.with(GifVew)
-                        .error(R.drawable.ic_home)
-                        .animateGif(AnimateGifMode.ANIMATE)
-                        // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
-                        .load("android.resource://com.mio.jrdv.ezbackandhome/" + R.drawable.gif_back);
-
-            }
 
             container.addView(view);
 

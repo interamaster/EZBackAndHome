@@ -17,15 +17,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        demo {
+            minSdkVersion 19
+            applicationId 'com.mio.jrdv.ezbackandhomedemo'
+            targetSdkVersion 23
+            versionCode 1
+            versionName '1.0'
+        }
+        infinite {
+            minSdkVersion 19
+            applicationId 'com.mio.jrdv.ezbackandhomeinfinite'
+            targetSdkVersion 23
+            versionCode 1
+            versionName '1.0'
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:23.4.0'
-
-    compile 'com.koushikdutta.ion:ion:2.+'//para los animated gif
+    compile 'com.koushikdutta.ion:ion:2.+'
+    //para los animated gif
     testCompile 'junit:junit:4.12'
 }
