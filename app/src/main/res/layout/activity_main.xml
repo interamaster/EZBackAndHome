@@ -77,6 +77,7 @@
         app:texts="@array/examples"
         android:layout_alignParentStart="true"
         android:id="@+id/fadingTextView"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/background_dark"/>
 
 

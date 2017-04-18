@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.tomer.fadingtextview.FadingTextView;
 
+import java.util.ArrayList;
+
 import static com.tomer.fadingtextview.FadingTextView.SECONDS;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     //V06 añadido en main previsualizar el panel de deslizamoento
     //V065 añadido intro help
     //V08 AÑADIDOS FLAVORS DE DEMO E INFINITE 18/4/17
+    //V085 añadido stadisticas de uso y text annimated para ponerlass
 
 
 
@@ -112,16 +115,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("INFO","NUMERO DE VECES HOME: "+homeveces);
 
 
-        //actualizar estadisticas:
 
-        String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
-        "22 VECES/DAY"};
-        final FadingTextView FTV = (FadingTextView) findViewById(R.id.fadingTextView);
-        FTV.setTexts(texts); //You can use an array resource or a string array as the parameter
-
-        //For text change every 1 seconds
-        FTV.setTimeout(1, SECONDS);
-        FTV.forceRefresh();
 
         //chequeo veriosn DEMO o INFINITE
 
@@ -134,8 +128,22 @@ public class MainActivity extends AppCompatActivity {
             apkname4AccesibilityService="com.mio.jrdv.ezbackandhomedemo/com.mio.jrdv.ezbackandhome.EZBackHomeService";
 
 
+            //actualizar estadisticas:
+
+            String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
+                    "22 VECES/DAY","FOR LESS THAN A BEER","PLEASE ","CONSIDER GETTING ","THE INFINITE VERSION!!"," "};
 
 
+
+            final FadingTextView FTV = (FadingTextView) findViewById(R.id.fadingTextView);
+
+            FTV.setTexts(texts); //You can use an array resource or a string array as the parameter
+
+
+
+            //For text change every 1 seconds
+            FTV.setTimeout(1, SECONDS);
+            FTV.forceRefresh();
 
         }
         else  if (BuildConfig.FLAVOR == "infinite") {
@@ -147,12 +155,29 @@ public class MainActivity extends AppCompatActivity {
             apkname4AccesibilityService="com.mio.jrdv.ezbackandhomeinfinite/com.mio.jrdv.ezbackandhome.EZBackHomeService";
 
 
+            //actualizar estadisticas:
+
+            String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
+                    "22 VECES/DAY","THANKS FOR USING","THE INFINITE VERSION","HOPE U ENJOY IT"," "," "};
+
+
+            final FadingTextView FTV = (FadingTextView) findViewById(R.id.fadingTextView);
+
+            FTV.setTexts(texts); //You can use an array resource or a string array as the parameter
+
+
+
+            //For text change every 1 seconds
+            FTV.setTimeout(1, SECONDS);
+            FTV.forceRefresh();
 
         }
 
 
 
-        setContentView(R.layout.activity_main);
+
+
+
         // For first switch button
         switcSERVICEENABLEButton = (Switch) findViewById(R.id.switch1);
 
