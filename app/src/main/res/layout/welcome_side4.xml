@@ -12,17 +12,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
+            android:layout_width="360dp"
+            android:layout_height="360dp"
             android:id="@+id/gif"
-            android:src="@drawable/ic_notification"
-            android:visibility="invisible"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/img_width_height"
-            android:id="@+id/INTRO4"
-            android:src="@drawable/ic_back"
-            />
+            android:src="@drawable/gif_ins" />
+
 
         <TextView
             android:layout_width="wrap_content"

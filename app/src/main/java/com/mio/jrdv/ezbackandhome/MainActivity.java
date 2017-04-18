@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //V065 añadido intro help
     //V08 AÑADIDOS FLAVORS DE DEMO E INFINITE 18/4/17
     //V085 añadido stadisticas de uso y text annimated para ponerlass
+    //V088 AÑADIDO logica de eatadisticas y nuevos Toast y detectada version demo 100 usos
 
 
 

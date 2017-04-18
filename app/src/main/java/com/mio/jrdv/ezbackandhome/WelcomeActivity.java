@@ -229,12 +229,21 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 }
 
-                else if(position==2) {
+                 if(position==2) {
                     Ion.with(GifVew)
                             .error(R.drawable.ic_home)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomedemo/" + R.drawable.gif_back);
+
+                }
+
+                else if(position==3) {
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomedemo/" + R.drawable.gif_ins);
 
                 }
 
@@ -255,7 +264,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 }
 
-                else if(position==2) {
+                 if(position==2) {
                     Ion.with(GifVew)
                             .error(R.drawable.ic_home)
                             .animateGif(AnimateGifMode.ANIMATE)
@@ -264,6 +273,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 }
 
+                else if(position==3) {
+                    Ion.with(GifVew)
+                            .error(R.drawable.ic_home)
+                            .animateGif(AnimateGifMode.ANIMATE)
+                            // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
+                            .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/" + R.drawable.gif_ins);
+
+                }
 
             }
 
