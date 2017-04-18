@@ -43,7 +43,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
 
-        Boolean INTROYAMOSTRADA = Myapplication.preferences.getBoolean(Myapplication.PREF_BOOL_SERVICEENABLED,false);//por defecto vale 0){
+        Boolean INTROYAMOSTRADA = Myapplication.preferences.getBoolean(Myapplication.PREF_IS_FIRST_TIME_LAUNCH,false);//por defecto vale 0){
 
 
 
@@ -134,7 +134,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void launchHomeScreen() {
 
 
-        Myapplication.preferences.edit().putBoolean(Myapplication.PREF_BOOL_SERVICEENABLED, true).commit();
+        Myapplication.preferences.edit().putBoolean(Myapplication.PREF_IS_FIRST_TIME_LAUNCH, true).commit();
 
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();

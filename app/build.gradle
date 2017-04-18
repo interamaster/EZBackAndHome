@@ -46,6 +46,11 @@ dependencies {
 
     //para el animated text con stadisticas
     compile 'com.tomer:fadingtextview:1.8.1'
+
+    //para los toast chulos
+
+    compile 'com.muddzdev:styleabletoast:1.0.7'
+
     testCompile 'junit:junit:4.12'
 
 }

@@ -2,6 +2,7 @@ package com.mio.jrdv.ezbackandhome;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +20,11 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.tomer.fadingtextview.FadingTextView;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 import static com.tomer.fadingtextview.FadingTextView.SECONDS;
 
@@ -115,6 +118,37 @@ public class MainActivity extends AppCompatActivity {
         Log.d("INFO","NUMERO DE VECES HOME: "+homeveces);
 
 
+        //para la fecha inicio
+        long FechaInicio = Myapplication.preferences.getLong(Myapplication.PREF_LONG_TIMEINSTALLED,0);//por defecto vale 0)
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String fechainicio = formatter.format(FechaInicio);
+        Log.d("INFO","se instalo el "+fechainicio);
+
+        //dias que se instalo
+        //http://stackoverflow.com/questions/23323792/android-days-between-two-dates
+
+        long msDiff = System.currentTimeMillis() - FechaInicio;
+        long diasDesdeInstalo = TimeUnit.MILLISECONDS.toDays(msDiff);
+
+        Log.d("INFO","hace "+diasDesdeInstalo+" DIAS");
+
+
+        if (FechaInicio==0){
+
+            //si es 0 qeu ponga aun no esta lista:
+            fechainicio="NOT YET WORKING!";
+            diasDesdeInstalo=1;
+
+        }
+
+        if (diasDesdeInstalo<1){
+            diasDesdeInstalo=1;
+        }
+        double backsaldianum=  backveces/diasDesdeInstalo;
+        String backsaldia=String.format("%.1f",backsaldianum)+"/DAY";
+        double homesaldianum=   homeveces/diasDesdeInstalo;
+        String homesaldia=String.format("%.1f",homesaldianum)+"/DAY";
 
 
         //chequeo veriosn DEMO o INFINITE
@@ -130,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
 
             //actualizar estadisticas:
 
-            String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
-                    "22 VECES/DAY","FOR LESS THAN A BEER","PLEASE ","CONSIDER GETTING ","THE INFINITE VERSION!!"," "};
+            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED",backsaldia,"AND","HOME USED:",
+                    homesaldia,"FOR LESS THAN A BEER","PLEASE ","CONSIDER GETTING ","THE INFINITE VERSION!!"," "};
 
 
 
@@ -157,8 +191,8 @@ public class MainActivity extends AppCompatActivity {
 
             //actualizar estadisticas:
 
-            String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
-                    "22 VECES/DAY","THANKS FOR USING","THE INFINITE VERSION","HOPE U ENJOY IT"," "," "};
+            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ",backsaldia,"AND","HOME USED:",
+                    homesaldia,"THANKS FOR USING","THE INFINITE VERSION","HOPE U ENJOY IT"," "," "};
 
 
             final FadingTextView FTV = (FadingTextView) findViewById(R.id.fadingTextView);
@@ -293,7 +327,11 @@ public class MainActivity extends AppCompatActivity {
 
                     Myapplication.preferences.edit().putBoolean(Myapplication.PREF_BOOL_SERVICEENABLED, true).commit();
 
-                    Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!", Toast.LENGTH_SHORT).show();
+
+                    //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
+
+                        showNewToast("NOW ENABLE EZBACKANDHOME AS ACCESIBILITY SERVICE !!" );
 
 
                     Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
@@ -310,7 +348,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    Toast.makeText(getApplicationContext(), "IF DISABLE THIS WILL OT WORK ANYMORE!!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "IF DISABLE THIS WILL OT WORK ANYMORE!!", Toast.LENGTH_SHORT).show();
+
+                    //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
+
+                    showNewToast("IF DISABLE THIS WILL OT WORK ANYMORE!!" );
 
 
                     Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
@@ -321,6 +363,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+    }
+
+    private void showNewToast(String texto2Toast) {
+
+
+        StyleableToast st = new StyleableToast(this, texto2Toast, Toast.LENGTH_SHORT);
+        st.setBackgroundColor(Color.parseColor("#ff5a5f"));
+        st.setTextColor(Color.WHITE);
+        st.setIcon(R.drawable.ic_back);//TODO poner icono app
+        st.spinIcon();
+        st.setCornerRadius(20);
+        st.setMaxAlpha();
+        st.show();
 
 
 
@@ -441,6 +499,29 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(LOGTAG, "Setting: " + accessabilityService);
                     if (accessabilityService.equalsIgnoreCase(apkname4AccesibilityService)){
                         Log.d(LOGTAG, "We've found the correct setting - accessibility is switched on!");
+
+                        //si no estaba guarada ya antes guardamos la fecha de inicio ahora
+
+                        long FechaInicio = Myapplication.preferences.getLong(Myapplication.PREF_LONG_TIMEINSTALLED,0);//por defecto vale 0)
+
+                        if (FechaInicio!=0){
+
+                            //no lo guaradamos ya estaba de antes
+                        }
+
+                        else {
+                            //guaradmos la fecha:
+                            Long ahora = System.currentTimeMillis();
+
+                            /*
+                            //http://stackoverflow.com/questions/7953725/how-to-convert-milliseconds-to-date-format-in-android
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                            String dateString = formatter.format(new Date(dateInMillis)));
+                             */
+
+                            Myapplication.preferences.edit().putLong(Myapplication.PREF_LONG_TIMEINSTALLED, ahora).commit();
+
+                        }
                         return true; }
                 }
             }
@@ -475,7 +556,11 @@ public class MainActivity extends AppCompatActivity {
 
             if (!acssebilityEnable){
                 //1º)si no esta habilitada aun le decimos que lo habilite:
-                Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!!!", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!!!", Toast.LENGTH_SHORT).show();
+
+                //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
+
+                showNewToast("YOU HAVE TO ENABLE ME TO WORK!!!!" );
 
                     switcSERVICEENABLEButton.setChecked(false);
 
@@ -529,7 +614,11 @@ public class MainActivity extends AppCompatActivity {
             //1º)si no esta habilitada aun le decimos que lo habilite:
 
 
-            Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!!!", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(getApplicationContext(), "YOU HAVE TO ENABLE ME TO WORK!!!!", Toast.LENGTH_SHORT).show();
+
+            //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
+
+            showNewToast("YOU HAVE TO ENABLE ME TO WORK!!" );
 
 
            // Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);

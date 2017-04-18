@@ -28,10 +28,10 @@ public class Myapplication extends Application {
     public static final String PREF_BOOL_PANELINBLACK="PanelBlack";
 
     //para ña intro
-    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    public static final String PREF_IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
     //PARA EL TIMEPO DESDE QUE SE INSTALO Y ESTADISTICAS USO
-    public static final String PREF_INT_TIMEINSTALLED="TimeInstalled";
+    public static final String PREF_LONG_TIMEINSTALLED ="TimeInstalled";
     public static final String PREF_INT_VECESHOME="VecesHome";
     public static final String PREF_INT_VECESBACK="VecesBack";
 

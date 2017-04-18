@@ -3,6 +3,7 @@ package com.mio.jrdv.ezbackandhome;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -11,6 +12,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
+import android.widget.Toast;
+
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class EZBackHomeService extends AccessibilityService {
 
@@ -457,6 +461,8 @@ Dim Yinicial As Int
 
                 //TODO hacer algo esat en demo
 
+                demoexpired();
+
                 return;//salimos de la funcion sin hacer nada... ?¿?
             }
 
@@ -470,6 +476,28 @@ Dim Yinicial As Int
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+    }
+
+    private void demoexpired() {
+
+
+
+
+
+
+            StyleableToast st = new StyleableToast(this, "DEMO EXPIRED, GET THE INFINITE VERSION!!", Toast.LENGTH_SHORT);
+            st.setBackgroundColor(Color.parseColor("#ff5a5f"));
+            st.setTextColor(Color.WHITE);
+            st.setIcon(R.drawable.ic_back);//TODO poner icono app
+            st.spinIcon();
+            st.setCornerRadius(20);
+            st.setMaxAlpha();
+            st.show();
+
+
+
 
 
     }
