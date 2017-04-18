@@ -19,6 +19,10 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.tomer.fadingtextview.FadingTextView;
+
+import static com.tomer.fadingtextview.FadingTextView.SECONDS;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     //V055 AÑADIDO CHEQUEO Y OBLIGACION DE ACTIVAR ACESIBILITY SI O SI)
     //V06 añadido en main previsualizar el panel de deslizamoento
     //V065 añadido intro help
+    //V08 AÑADIDOS FLAVORS DE DEMO E INFINITE 18/4/17
 
 
 
@@ -68,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
     View azephyrPanelViewFromMain;    //mio panel zephyr:
 
+    //para el numeor de uso
+    int backveces,homeveces;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +99,29 @@ public class MainActivity extends AppCompatActivity {
         Log.d("INFO","PREF_BOOL_PANELINBLACK: "+PANELINBLACK);
 
 
+
+        //guardar timepodesde que se instalo y recvuperar numero de veces home y back
+
+
+          backveces = Myapplication.preferences.getInt(Myapplication.PREF_INT_VECESBACK,0);//por defecto vale 0){
+
+        Log.d("INFO","NUMERO DE VECES BACK: "+backveces);
+
+        homeveces = Myapplication.preferences.getInt(Myapplication.PREF_INT_VECESHOME,0);//por defecto vale 0){
+
+        Log.d("INFO","NUMERO DE VECES HOME: "+homeveces);
+
+
+        //actualizar estadisticas:
+
+        String[] texts = {"SINCE","12/apr/2017","BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED","25 VECES/DAY","AND","HOME USED:",
+        "22 VECES/DAY"};
+        final FadingTextView FTV = (FadingTextView) findViewById(R.id.fadingTextView);
+        FTV.setTexts(texts); //You can use an array resource or a string array as the parameter
+
+        //For text change every 1 seconds
+        FTV.setTimeout(1, SECONDS);
+        FTV.forceRefresh();
 
         //chequeo veriosn DEMO o INFINITE
 

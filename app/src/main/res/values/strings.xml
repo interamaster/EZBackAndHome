@@ -22,4 +22,10 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
+
+    <string-array name="examples">
+        <item>HELLO</item>
+        <item>STATISTICS OF EZBACKANDHOME</item>
+    </string-array>
+
 </resources>

@@ -30,6 +30,11 @@ public class Myapplication extends Application {
     //para ña intro
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
+    //PARA EL TIMEPO DESDE QUE SE INSTALO Y ESTADISTICAS USO
+    public static final String PREF_INT_TIMEINSTALLED="TimeInstalled";
+    public static final String PREF_INT_VECESHOME="VecesHome";
+    public static final String PREF_INT_VECESBACK="VecesBack";
+
 
     @Override
     public void onCreate() {

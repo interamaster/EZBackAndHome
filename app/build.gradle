@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion "23.0.2"
     defaultConfig {
         applicationId "com.mio.jrdv.ezbackandhome"
@@ -40,8 +40,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.koushikdutta.ion:ion:2.+'
     //para los animated gif
+
+    //para el animated text con stadisticas
+    compile 'com.tomer:fadingtextview:1.8.1'
     testCompile 'junit:junit:4.12'
+
 }

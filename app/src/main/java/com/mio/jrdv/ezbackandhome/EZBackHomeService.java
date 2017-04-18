@@ -33,6 +33,10 @@ public class EZBackHomeService extends AccessibilityService {
     boolean lock;
 
 
+    //para el numeor de uso
+    int backveces,homeveces;
+
+
 
     @SuppressLint("RtlHardcoded")
     @Override
@@ -40,7 +44,25 @@ public class EZBackHomeService extends AccessibilityService {
         super.onCreate();
 
 
+
+
+
         Log.d("INFO","ARRANACADO AZEPHYR NEW");
+
+
+        //guardar  y recvuperar numero de veces home y back
+
+
+        backveces = Myapplication.preferences.getInt(Myapplication.PREF_INT_VECESBACK,0);//por defecto vale 0){
+
+        Log.d("INFO","NUMERO DE VECES BACK: "+backveces);
+
+        homeveces = Myapplication.preferences.getInt(Myapplication.PREF_INT_VECESHOME,0);//por defecto vale 0){
+
+        Log.d("INFO","NUMERO DE VECES BACK: "+homeveces);
+
+
+
 
 
         lock=false;
@@ -419,6 +441,30 @@ Dim Yinicial As Int
 
     private void PulsarHomeKey() {
 
+        // aumentamos el numero
+
+        homeveces++;
+        Myapplication.preferences.edit().putInt(Myapplication.PREF_INT_VECESHOME, homeveces).commit();
+
+        //chequeo veriosn DEMO o INFINITE
+
+
+        if (BuildConfig.FLAVOR == "demo") {
+            // add some ads or restrict functionallity
+            Log.d("INFO"," home en MODO DEMO: usada:"+homeveces+" veces");
+
+            if (homeveces>100){
+
+                //TODO hacer algo esat en demo
+
+                return;//salimos de la funcion sin hacer nada... ?¿?
+            }
+
+
+
+
+        }
+
         try {
             performGlobalAction(AccessibilityService.GLOBAL_ACTION_HOME);
         } catch (Exception e) {
@@ -468,6 +514,29 @@ Dim Yinicial As Int
 
 
     private void BackKeySImulate() {
+        // aumentamos el numero
+
+        backveces++;
+        Myapplication.preferences.edit().putInt(Myapplication.PREF_INT_VECESBACK, backveces).commit();
+
+
+        //chequeo veriosn DEMO o INFINITE
+
+
+        if (BuildConfig.FLAVOR == "demo") {
+            // add some ads or restrict functionallity
+            Log.d("INFO"," back en MODO DEMO:  usada:"+backveces+" veces");
+
+            if (backveces>100){
+
+                //TODO hacer algo esat en demo
+
+                return;//salimos de la funcion sin hacer nada... ?¿?
+            }
+
+
+        }
+
         try {
             performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
         } catch (Exception e) {

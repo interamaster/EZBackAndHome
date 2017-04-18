@@ -88,7 +88,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHomeScreen();
+                launchHomeScreenSinGuardarYaVisto();
             }
         });
 
@@ -135,6 +135,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
         Myapplication.preferences.edit().putBoolean(Myapplication.PREF_BOOL_SERVICEENABLED, true).commit();
+
+        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        finish();
+    }
+
+
+    private void launchHomeScreenSinGuardarYaVisto() {
+
+
+       //idem pero sin guardar
 
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();
