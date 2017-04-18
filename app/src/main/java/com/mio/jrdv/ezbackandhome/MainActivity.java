@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //V08 AÑADIDOS FLAVORS DE DEMO E INFINITE 18/4/17
     //V085 añadido stadisticas de uso y text annimated para ponerlass
     //V088 AÑADIDO logica de eatadisticas y nuevos Toast y detectada version demo 100 usos
+    //V089 new gifs de ins
 
 
 
@@ -375,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
         StyleableToast st = new StyleableToast(this, texto2Toast, Toast.LENGTH_SHORT);
         st.setBackgroundColor(Color.parseColor("#ff5a5f"));
         st.setTextColor(Color.WHITE);
-        st.setIcon(R.drawable.ic_back);//TODO poner icono app
+        st.setIcon(R.mipmap.ic_launcher);//TODO poner icono app
         st.spinIcon();
         st.setCornerRadius(20);
         st.setMaxAlpha();

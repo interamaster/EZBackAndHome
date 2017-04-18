@@ -222,7 +222,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 if (position==1){
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomedemo/"+R.drawable.gif_home);
@@ -231,7 +231,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                  if(position==2) {
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomedemo/" + R.drawable.gif_back);
@@ -240,7 +240,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 else if(position==3) {
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomedemo/" + R.drawable.gif_ins);
@@ -257,7 +257,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 if (position==1){
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/"+R.drawable.gif_home);
@@ -266,7 +266,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                  if(position==2) {
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/" + R.drawable.gif_back);
@@ -275,7 +275,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
                 else if(position==3) {
                     Ion.with(GifVew)
-                            .error(R.drawable.ic_home)
+                            .error(R.mipmap.ic_launcher)
                             .animateGif(AnimateGifMode.ANIMATE)
                             // .load("android.resource://[packagename]" + R.drawable.optinscreen_map)
                             .load("android.resource://com.mio.jrdv.ezbackandhomeinfinite/" + R.drawable.gif_ins);

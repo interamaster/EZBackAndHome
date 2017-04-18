@@ -490,7 +490,7 @@ Dim Yinicial As Int
             StyleableToast st = new StyleableToast(this, "DEMO EXPIRED, GET THE INFINITE VERSION!!", Toast.LENGTH_SHORT);
             st.setBackgroundColor(Color.parseColor("#ff5a5f"));
             st.setTextColor(Color.WHITE);
-            st.setIcon(R.drawable.ic_back);//TODO poner icono app
+            st.setIcon(R.mipmap.ic_launcher);//TODO poner icono app
             st.spinIcon();
             st.setCornerRadius(20);
             st.setMaxAlpha();
