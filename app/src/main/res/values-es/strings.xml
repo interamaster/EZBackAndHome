@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">EZBackAndHome</string>
+    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nEl Servicio de Accesibilidad debe estar habilitado antes.Una vez pulses te llevará al menú de Accesibilidad y ahi debes habilitarlo \n\nTambien puedes ver donde queda el panel en negro para que sepas donde hacer los gestos!!!</string>
+
+    <string name="title_activity_welcome">Inicio</string>
+    <string name="next">SIGUIENTE</string>
+    <string name="skip">PASO</string>
+    <string name="start">OK</string>
+
+    <string name="slide_1_title">EZBACKandhOME!</string>
+    <string name="slide_1_desc">Olvida los botones fisicos!\nEsto es mas rápido e intuitivo.\nUna vez te acostumbres ya nos los usaras nunca más!!!</string>
+
+    <string name="slide_2_title">FLING para HOME</string>
+    <string name="slide_2_desc">Desliza hacia arriba y suelta el dedo para simular el boton HOME!</string>
+
+    <string name="slide_3_title">SWIPE UP/DOWN para BACK</string>
+    <string name="slide_3_desc">Solo desliza arriba ya abajo rápido para simular el boton ATRAS!</string>
+
+    <string name="slide_4_title">RECUERDA HABILITAME!!</string>
+    <string name="slide_4_desc">Para que funcione tienes que habiltar el Servicio de Accesibilidad primero.\nSolo gasto 1% bateria a la semana\nPara saber desde donde empezar los gesto puedes mostrar la barra detectora que se pondra en negro.\nEspero que te guste!!\n\n (c)JRDVSOFT Abril 2017</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="service_enabled">Servicio Habilitado</string>
+    <string name="show_panel">Muestra Panel</string>
+    <string name="finish">LISTO</string>
+
+
+    <string-array name="examples">
+        <item>HELLO</item>
+        <item>STATISTICS OF EZBACKANDHOME</item>
+    </string-array>
+
+</resources>

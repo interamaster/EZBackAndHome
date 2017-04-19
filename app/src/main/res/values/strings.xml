@@ -21,6 +21,9 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="service_enabled">Service Enabled</string>
+    <string name="show_panel">Show Panel</string>
+    <string name="finish">FINISH</string>
 
 
     <string-array name="examples">

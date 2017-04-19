@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     //V085 añadido stadisticas de uso y text annimated para ponerlass
     //V088 AÑADIDO logica de eatadisticas y nuevos Toast y detectada version demo 100 usos
     //V089 new gifs de ins
+    //v09 iconos añadidso de demo e infinite pte solo texto español....o no
+
 
 
 
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
             //actualizar estadisticas:
 
-            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ","BACK USED",backsaldia,"AND","HOME USED:",
+            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS:","BACK USED",backsaldia,"AND","HOME USED:",
                     homesaldia,"FOR LESS THAN A BEER","PLEASE ","CONSIDER GETTING ","THE INFINITE VERSION!!"," "};
 
 
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
             //actualizar estadisticas:
 
-            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS ",backsaldia,"AND","HOME USED:",
+            String[] texts = {"SINCE",String.valueOf(fechainicio),"BACK SIMULATED:", String.valueOf(backveces)+" TIMES","AND","HOME SIMULATED: ",String.valueOf(homeveces)+" TIMES","WHAT MEANS:","BACK USED",backsaldia,"AND","HOME USED:",
                     homesaldia,"THANKS FOR USING","THE INFINITE VERSION","HOPE U ENJOY IT"," "," "};
 
 

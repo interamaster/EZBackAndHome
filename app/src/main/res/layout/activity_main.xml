@@ -11,7 +11,7 @@
     tools:context="com.mio.jrdv.ezbackandhome.MainActivity">
 
     <Switch
-        android:text="Service Enabled"
+        android:text="@string/service_enabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -25,7 +25,7 @@
         />
 
     <Switch
-        android:text="Show Panel"
+        android:text="@string/show_panel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="FINISH"
+        android:text="@string/finish"
         android:id="@+id/btn_start"
         android:onClick="start"
         android:textColor="#ffffff"
