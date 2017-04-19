@@ -8,7 +8,7 @@
     <string name="start">OK</string>
 
     <string name="slide_1_title">EZBACKandhOME DEMO!</string>
-    <string name="slide_1_desc">Olvida los botones fisicos!\nEsto es mas rápido e intuitivo.\nUna vez te acostumbres ya nos los usaras nunca más!!!\n(limitado to 100 gestos)</string>
+    <string name="slide_1_desc">Olvida los botones fisicos!\nEsto es mas rápido e intuitivo.\nUna vez te acostumbres ya nos los usaras nunca más!!!\n(limitado a 100 gestos)</string>
 
     <string name="slide_2_title">FLING para HOME</string>
     <string name="slide_2_desc">Desliza hacia arriba y suelta el dedo para simular el boton HOME!</string>

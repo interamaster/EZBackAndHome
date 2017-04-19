@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
 
-                    showNewToast("IF DISABLE THIS WILL OT WORK ANYMORE!!" );
+                    showNewToast("IF DISABLE THIS WILL NOT WORK ANYMORE!!" );
 
 
                     Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
@@ -657,6 +657,24 @@ public class MainActivity extends AppCompatActivity {
         // -- permission denied for this window type
 
         // startService(new Intent(getApplication(), EZBackHomeService.class));
+
+    }
+
+    public void HelpPulsado(View view) {
+
+        //pulsado help..vuelve a mostrar wellcome activity
+
+
+        //ponemos el boolean a no..o no sale:
+        Myapplication.preferences.edit().putBoolean(Myapplication.PREF_IS_FIRST_TIME_LAUNCH, false).commit();
+
+        //volvemos a Mainactivity
+
+        Intent startIntent = new Intent(this, WelcomeActivity.class);
+        startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(startIntent);
+
+        finish();
 
     }
 }
