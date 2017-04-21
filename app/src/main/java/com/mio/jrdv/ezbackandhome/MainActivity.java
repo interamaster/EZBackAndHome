@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     //V088 AÑADIDO logica de eatadisticas y nuevos Toast y detectada version demo 100 usos
     //V089 new gifs de ins
     //v09 iconos añadidso de demo e infinite pte solo texto español....o no
-
+    //v11 demo cambiado textos de ayuda y añadido boton de anuncios para aunmentar 100 gestos, añadidias libs de vungle y sdk
+    //pte implementar permisos y cosasd evungle
 
 
 
