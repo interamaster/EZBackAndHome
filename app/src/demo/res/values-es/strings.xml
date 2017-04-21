@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EZBackAndHome</string>
-    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nEl Servicio de Accesibilidad debe estar habilitado antes.Una vez pulses te llevará al menú de Accesibilidad y ahi debes habilitarlo \n\nTambien puedes ver donde queda el panel en negro para que sepas donde hacer los gestos!!!</string>
+    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nEl Servicio de Accesibilidad debe estar habilitado antes.Una vez pulses te llevará al menú de Accesibilidad y ahi debes habilitarlo \n\nTambien puedes ver donde queda el panel en negro para que sepas donde hacer los gestos!!!\n\nVersion DEMO limitada a 100 gestos, puedes conseguir 100 mas pulsando el icono PLUS y viendo el anuncio de 10 segundos.\nSi te gusta considera la INFINITE version</string>
 
     <string name="title_activity_welcome">Inicio</string>
     <string name="next">SIGUIENTE</string>
@@ -11,10 +11,10 @@
     <string name="slide_1_desc">Olvida los botones fisicos!\nEsto es mas rápido e intuitivo.\nUna vez te acostumbres ya nos los usaras nunca más!!!\n(limitado a 100 gestos)</string>
 
     <string name="slide_2_title">FLING para HOME</string>
-    <string name="slide_2_desc">Desliza hacia arriba y suelta el dedo para simular el boton HOME!</string>
+    <string name="slide_2_desc">Desliza desde abajo de la pantalla con el dedo  hacia arriba y suelta  para simular el boton HOME!</string>
 
     <string name="slide_3_title">SWIPE UP/DOWN para BACK</string>
-    <string name="slide_3_desc">Solo desliza arriba y abajo rápido para simular el boton ATRAS!</string>
+    <string name="slide_3_desc">Solo desliza el dedo(tocando la pantalla) arriba y abajo rápido para simular el boton ATRAS!</string>
 
     <string name="slide_4_title">RECUERDA HABILITAME!!</string>
     <string name="slide_4_desc">Para que funcione tienes que habiltar el Servicio de Accesibilidad primero.\nSolo gasto 1% bateria a la semana\nPara saber desde donde empezar los gesto puedes mostrar la barra detectora que se pondra en negro.\nEspero que te guste!!\n\n (c)JRDVSOFT Abril 2017</string>

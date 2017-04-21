@@ -40,6 +40,10 @@ public class EZBackHomeService extends AccessibilityService {
     //para el numeor de uso
     int backveces,homeveces;
 
+    //para el maximo en DEDMO
+
+    int maxGestonDemo;
+
 
 
     @SuppressLint("RtlHardcoded")
@@ -66,6 +70,14 @@ public class EZBackHomeService extends AccessibilityService {
         Log.d("INFO","NUMERO DE VECES BACK: "+homeveces);
 
 
+
+
+
+        //para guardar y recuperar el numero maximo en modo demo(aunmenta 100 cada evz que se ve un anuncio)
+
+        maxGestonDemo = Myapplication.preferences.getInt(Myapplication.PREF_INT_NUMmaxpermitidodemo,100);//por defecto vale 100){
+
+        Log.d("INFO","NUMERO MAXIMO DE GESTOS EN DEMO: "+maxGestonDemo);
 
 
 
@@ -455,9 +467,20 @@ Dim Yinicial As Int
 
         if (BuildConfig.FLAVOR == "demo") {
             // add some ads or restrict functionallity
-            Log.d("INFO"," home en MODO DEMO: usada:"+homeveces+" veces");
 
-            if (homeveces>100){
+
+            //recuepramos aqui el valor
+
+
+            //para guardar y recuperar el numero maximo en modo demo(aunmenta 100 cada evz que se ve un anuncio)
+
+            maxGestonDemo = Myapplication.preferences.getInt(Myapplication.PREF_INT_NUMmaxpermitidodemo,100);//por defecto vale 100){
+
+
+
+            Log.d("INFO"," home en MODO DEMO: usada:"+homeveces+" veces y el maximo son :"+maxGestonDemo);
+
+            if (homeveces>maxGestonDemo){
 
                 //TODO hacer algo esat en demo
 
@@ -487,7 +510,7 @@ Dim Yinicial As Int
 
 
 
-            StyleableToast st = new StyleableToast(this, "DEMO EXPIRED, GET THE INFINITE VERSION!!", Toast.LENGTH_SHORT);
+            StyleableToast st = new StyleableToast(this, "DEMO EXPIRED, GET THE INFINITE VERSION OR CLICK PLUS BUTTON!!", Toast.LENGTH_SHORT);
             st.setBackgroundColor(Color.parseColor("#ff5a5f"));
             st.setTextColor(Color.WHITE);
             st.setIcon(R.mipmap.ic_launcher);//TODO poner icono app
@@ -553,11 +576,21 @@ Dim Yinicial As Int
 
         if (BuildConfig.FLAVOR == "demo") {
             // add some ads or restrict functionallity
+
+
+            //para guardar y recuperar el numero maximo en modo demo(aunmenta 100 cada evz que se ve un anuncio)
+
+            maxGestonDemo = Myapplication.preferences.getInt(Myapplication.PREF_INT_NUMmaxpermitidodemo,100);//por defecto vale 100){
+
+
             Log.d("INFO"," back en MODO DEMO:  usada:"+backveces+" veces");
 
-            if (backveces>100){
+            if (backveces>maxGestonDemo){
 
                 //TODO hacer algo esat en demo
+
+                demoexpired();
+
 
                 return;//salimos de la funcion sin hacer nada... ?¿?
             }

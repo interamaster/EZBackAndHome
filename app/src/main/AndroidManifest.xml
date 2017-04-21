@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mio.jrdv.ezbackandhome">
-    //permisos
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
+    <!-- permissions are imported via brand-specific AndroidManifest.xml -->
+
+    <!-- common manifest elements -->
 
     <application
         android:name=".Myapplication"

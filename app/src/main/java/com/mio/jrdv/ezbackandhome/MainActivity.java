@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
     //para el numeor de uso
     int backveces,homeveces;
 
+    //para el maximo en DEDMO
+
+    int maxGestonDemo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,6 +186,13 @@ public class MainActivity extends AppCompatActivity {
             //For text change every 1 seconds
             FTV.setTimeout(1, SECONDS);
             FTV.forceRefresh();
+
+            //para guardar y recuperar el numero maximo en modo demo(aunmenta 100 cada evz que se ve un anuncio)
+
+            maxGestonDemo = Myapplication.preferences.getInt(Myapplication.PREF_INT_NUMmaxpermitidodemo,100);//por defecto vale 100){
+
+            Log.d("INFO","NUMERO MAXIMO DE GESTOS EN DEMO: "+maxGestonDemo);
+
 
         }
         else  if (BuildConfig.FLAVOR == "infinite") {
@@ -675,6 +686,18 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(startIntent);
 
         finish();
+
+    }
+
+    public void AnuncioPulsado(View view) {
+
+        //TODO aqui que salga anuncio!!!
+
+        maxGestonDemo=maxGestonDemo+100;
+        Myapplication.preferences.edit().putInt(Myapplication.PREF_INT_NUMmaxpermitidodemo, maxGestonDemo).commit();
+
+
+        Log.d("INFO","numeromaximo de gestos en demo:"+maxGestonDemo);
 
     }
 }

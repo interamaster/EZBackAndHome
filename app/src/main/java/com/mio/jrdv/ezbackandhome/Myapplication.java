@@ -35,6 +35,9 @@ public class Myapplication extends Application {
     public static final String PREF_INT_VECESHOME="VecesHome";
     public static final String PREF_INT_VECESBACK="VecesBack";
 
+    //PARA DEMO VERIOSN AÑADIR CLICK CON ANUNCIOS
+
+    public static final String PREF_INT_NUMmaxpermitidodemo="MaxGesturesDemo";
 
     @Override
     public void onCreate() {

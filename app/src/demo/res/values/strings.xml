@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EZBackAndHome DEMO</string>
-    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working.Once clicked please enable de EZGestures Service \n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to understand!!!</string>
+    <string name="info">INFO:(c)JRDVSOFT Abril 2017\n\nThe Service(Accesibility) must be enabled before start working.Once clicked please enable de EZGestures Service \n\nYou can choose to see the panel in Black to notice exactly where it is located to make the Gesture easier to understand!!!\n\nDemo version is limited to 100 gestures but can get 100 more just  clicking on the plus icon and watching the 10 secs video.\nPlease consider getting the INFINITE version</string>
 
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
@@ -11,10 +11,10 @@
     <string name="slide_1_desc">Forget the physical buttons!\nThis is faster and more intuitive.\nOnce used to do it you will never use the physical buttons anymore!!!\n(limited to 100 gestures)</string>
 
     <string name="slide_2_title">FLING to HOME</string>
-    <string name="slide_2_desc">Fling(swipe up fast and release finger) from bottom to simulate the home Button press!</string>
+    <string name="slide_2_desc">Fling(swipe up fast and release finger) from bottom of the screen(but touching it) to simulate the home Button press!</string>
 
     <string name="slide_3_title">SWIPE UP/DOWN to BACK</string>
-    <string name="slide_3_desc">Simply swipe up and down fast from bottom of the screen to simulate the BACK Key press!</string>
+    <string name="slide_3_desc">Simply swipe up and down fast from bottom of the screen(but touching it) to simulate the BACK Key press!</string>
 
     <string name="slide_4_title">ENABLE ME FIRST!!</string>
     <string name="slide_4_desc">In order to work, you first must enable me as an Accesibility Service running.\nDo not worry about battery usage, it is less than 1% at week!\nYou can take a look , on how we detect the Fling and the Swipe up and down by enable the Panel in Black.\nHope you enjoy it!!!\n\n (c)JRDVSOFT Abril 2017</string>
