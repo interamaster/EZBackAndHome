@@ -20,6 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.ads.mediation.admob.AdMobAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import com.tomer.fadingtextview.FadingTextView;
 
@@ -90,6 +96,13 @@ public class MainActivity extends AppCompatActivity {
     //para el maximo en DEDMO
 
     int maxGestonDemo;
+
+
+    //para el ads
+
+    RewardedVideoAd videoAd;
+    private boolean mIsRewardedVideoLoading;
+    private final Object mLock = new Object();
 
 
     @Override
@@ -193,6 +206,118 @@ public class MainActivity extends AppCompatActivity {
             maxGestonDemo = Myapplication.preferences.getInt(Myapplication.PREF_INT_NUMmaxpermitidodemo,100);//por defecto vale 100){
 
             Log.d("INFO","NUMERO MAXIMO DE GESTOS EN DEMO: "+maxGestonDemo);
+
+
+
+
+            //los anuancios!!
+
+            Log.d("INFO","INIICIADNDO ANUNCIOS EN DEMO!!!!");
+
+
+
+            // Initialize the Mobile Ads SDK.
+            MobileAds.initialize(this, "ca-app-pub-6700746515260621~2553228194");
+
+
+            videoAd = MobileAds.getRewardedVideoAdInstance(this);
+            videoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+                @Override
+                public void onRewarded(RewardItem reward) {
+                  //  Toast.makeText(MainActivity.this, "onRewarded! currency: " + reward.getType() + "  amount: " +  reward.getAmount(), Toast.LENGTH_SHORT).show();
+
+
+                    Log.d("INFO","onRewarded EN DEMO: "+ reward.getType() + "  amount: " + reward.getAmount());
+
+                    //CERRAMOS EL VIDEO
+                   MainActivity.super.recreate();
+
+                    //TODO en lugar de toast usamos https://github.com/Muddz/StyleableToast
+
+                    showNewToast("100 GESTURES MORE..ENJOY IT!!" );
+
+                    ADD100GestureTrasAd();
+                }
+
+                @Override
+                public void onRewardedVideoAdLeftApplication() {
+                //    Toast.makeText(MainActivity.this, "onRewardedVideoAdLeftApplication",  Toast.LENGTH_SHORT).show();
+
+                    Log.d("INFO","onRewardedVideoAdLeftApplication EN DEMO: ");
+
+
+
+                    showNewToast("SORRY WATCH THE COMPLETE ADD!!" );
+
+                }
+
+                @Override
+                public void onRewardedVideoAdClosed() {
+                    //Toast.makeText(MainActivity.this, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show();
+
+                    Log.d("INFO","onRewardedVideoAdClosed EN DEMO: ");
+
+
+                    showNewToast("SORRY WATCH THE COMPLETE ADD!!(IGNORE IF ALREADY GOT THE 100 GESTURES)" );
+                }
+
+                @Override
+                public void onRewardedVideoAdFailedToLoad(int errorCode) {
+                    //Toast.makeText(MainActivity.this, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show();
+
+                    Log.d("INFO","onRewardedVideoAdFailedToLoad EN DEMO: ");
+                }
+
+                @Override
+                public void onRewardedVideoAdLoaded() {
+                   // Toast.makeText(MainActivity.this, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show();
+                    Log.d("INFO","onRewardedVideoAdLoaded EN DEMO: ");
+                }
+
+                @Override
+                public void onRewardedVideoAdOpened() {
+                   // Toast.makeText(MainActivity.this, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show();
+                    Log.d("INFO","onRewardedVideoAdOpened EN DEMO: ");
+                }
+
+                @Override
+                public void onRewardedVideoStarted() {
+                    //Toast.makeText(MainActivity.this, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show();
+                    Log.d("INFO","onRewardedVideoStarted EN DEMO: ");
+                }
+            });
+
+
+/*
+            Bundle extrasBundle = new Bundle();
+            extrasBundle.putBoolean("_noRefresh", true);
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addNetworkExtrasBundle(AdMobAdapter.class, extrasBundle)
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("C8D2FC986273867ED5FDEFAFA8F23BEE")//mi s4 se saca de http://www.hermosaprogramacion.com/2016/08/admob-android/
+                    .build();
+            videoAd.loadAd( getString(R.string.banner_ad_unit_id), adRequest);//the vungle API ID!!??? o el de ADMOB?¿
+*/
+            //58f9e458477a4c6a660001c7 EL DE VIUNGLE
+            //ca-app-pub-6700746515260621~2553228194 EL DE ADMOB!!
+
+
+//segun google:https://firebase.google.com/docs/admob/android/rewarded-video?hl=es
+
+
+            synchronized (mLock) {
+                if (!mIsRewardedVideoLoading) {
+                    mIsRewardedVideoLoading = true;
+                    Bundle extras = new Bundle();
+                    extras.putBoolean("_noRefresh", true);
+                    AdRequest adRequest = new AdRequest.Builder()
+                            .addNetworkExtrasBundle(AdMobAdapter.class, extras)
+                            //.addTestDevice("C8D2FC986273867ED5FDEFAFA8F23BEE")//si se añade no da error ?¿?¿
+                            .build();
+                    videoAd.loadAd(getString(R.string.banner_ad_unit_id), adRequest);
+                }
+            }
+
 
 
         }
@@ -382,6 +507,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void ADD100GestureTrasAd() {
+
+
+
+        maxGestonDemo=maxGestonDemo+100;
+        Myapplication.preferences.edit().putInt(Myapplication.PREF_INT_NUMmaxpermitidodemo, maxGestonDemo).commit();
+
+
+        Log.d("INFO","numeromaximo de gestos en demo:"+maxGestonDemo);
     }
 
     private void showNewToast(String texto2Toast) {
@@ -692,7 +828,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void AnuncioPulsado(View view) {
 
-        //TODO aqui que salga anuncio!!!
+
+
+        if (videoAd.isLoaded()) {
+            videoAd.show();
+        }
+
+        else{
+
+
+
+            showNewToast("SORRY ACTIVATE INTERNET CONNECTION OR WAIT TILL ADD IS LOADED!!" );
+        }
+
+
+
+/*
+        //TODO aqui que salga anuncio!!!..no en otra funcion:ADD100GestureTrasAd
 
         maxGestonDemo=maxGestonDemo+100;
         Myapplication.preferences.edit().putInt(Myapplication.PREF_INT_NUMmaxpermitidodemo, maxGestonDemo).commit();
@@ -700,5 +852,9 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("INFO","numeromaximo de gestos en demo:"+maxGestonDemo);
 
+        */
+
     }
+
+
 }

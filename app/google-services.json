@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "625734752720",
+    "firebase_url": "https://ezbackandhome.firebaseio.com",
+    "project_id": "ezbackandhome",
+    "storage_bucket": "ezbackandhome.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625734752720:android:d70712138dd6ddeb",
+        "android_client_info": {
+          "package_name": "com.mio.jrdv.ezbackandhomedemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625734752720-b9jm0ifgikhrk115pg5k2cu7i9574jp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALDfXFbzZx5ap97roGP1Lzac8A2IB6Jx4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

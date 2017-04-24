@@ -53,7 +53,7 @@ dependencies {
 
     //PARA LOS ADS
 
-    compile 'com.google.firebase:firebase-ads:9.2.0'
+    compile 'com.google.firebase:firebase-ads:10.0.1'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])  // Vungle SDK
     compile(name:'VungleAdapter', 'ext':'aar')  // Vungle Adapter for AdMob
