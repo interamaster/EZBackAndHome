@@ -51,6 +51,27 @@ dependencies {
 
     compile 'com.muddzdev:styleabletoast:1.0.7'
 
+    //PARA LOS ADS
+
+    compile 'com.google.firebase:firebase-ads:9.2.0'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])  // Vungle SDK
+    compile(name:'VungleAdapter', 'ext':'aar')  // Vungle Adapter for AdMob
+
     testCompile 'junit:junit:4.12'
 
+
+
+
+
 }
+
+repositories {
+    jcenter()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
